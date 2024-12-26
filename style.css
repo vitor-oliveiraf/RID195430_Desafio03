@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-size: 10px;
+  font-family: "Rubik", serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #f5f9ff;
+}
+
+main {
+  width: 650px;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 1.6rem;
+}
+
+.sectionTitle {
+  width: 90%;
+  margin: 0 auto;
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #11175e;
+
+  & > h1 {
+    margin: 2.4rem 0;
+  }
+}
+
+.sectionForm {
+  width: 90%;
+  margin: 0 auto 2.4rem auto;
+}
+
+.formTodo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.6rem;
+
+  & > input {
+    width: 70%;
+    border: 1px solid #2d70fd;
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+    padding: 1.6rem 2.4rem 1.6rem 2.4rem;
+  }
+
+  & > button {
+    min-width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: #2d70fd;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+}
+
+.btnConcluido {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 100%;
+  background-color: #00d8a7;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+}
+/* Icone do botão concluido */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
+}
+
+#sectionList {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 0.8rem;
+}
+
+.cardContainer {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  border: 1px solid #eeeeee;
+  border-radius: 1.6rem;
+  padding: 2.4rem 3.2rem;
+  box-sizing: border-box;
+}
+
+.cardInfo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.description {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #001747;
+}
+
+.descriptionConcluido {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #8f98a8;
+  text-decoration: line-through;
+}
+
+.labelContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #b1bacb;
+  border: 1px solid #b1bacb;
+  border-radius: 1.6rem;
+  padding: 0.4rem 0.8rem;
+}
+
+.createdAt {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b1bacb;
+}
+
+.btnConcluir {
+  min-width: 120px;
+  height: 45px;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #2d70fd;
+  box-sizing: border-box;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.separator {
+  width: 90%;
+  display: flex;
+  margin: 2.4rem auto;
+  border-top: 1px solid #eeeeee;
+}
+
+#sectionCount {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: end;
+  margin-bottom: 2.4rem;
+}
+
+.taskCounter {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #b1bacb;
+}
+
+@media screen and (max-width: 649px) {
+  .sectionTitle {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .formTodo {
+    flex-direction: column;
+    gap: 1.6rem;
+    & > input {
+      width: 100%;
+    }
+    & > button {
+      width: 100%;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .cardContainer {
+    flex-direction: column;
+  }
+  .cardInfo {
+  }
+}
