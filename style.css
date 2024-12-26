@@ -208,9 +208,22 @@ main {
 }
 
 @media screen and (max-width: 570px) {
+  body {
+    align-items: flex-start;
+  }
   .cardContainer {
     flex-direction: column;
   }
-  .cardInfo {
+}
+
+@media screen and (max-width: 500px) {
+  .sectionTitle h1 {
+    font-size: 2.8rem;
+    text-align: center;
+  }
+  .labelContainer {
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
   }
 }

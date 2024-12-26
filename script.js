@@ -9,13 +9,13 @@ let tasks = [
     description: "Criar endpoint para cadastro de tarefas",
     label: "backend",
     CreatedAt: "22/08/2024",
-    concluded: false,
+    concluded: true,
   },
   {
     description: "Implementar protótipo da listagem de tarefas",
     label: "ux",
     CreatedAt: "23/08/2024",
-    concluded: false,
+    concluded: true,
   },
 ];
 
