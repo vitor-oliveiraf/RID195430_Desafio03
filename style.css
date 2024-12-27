@@ -17,14 +17,14 @@ body {
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 3rem 0;
   margin: 0;
   background-color: #f5f9ff;
 }
 
 main {
   width: 650px;
-  min-height: 580px;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
@@ -48,7 +48,7 @@ main {
   margin: 0 auto 2.4rem auto;
 }
 
-.formTodo {
+#formTodo {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -175,15 +175,30 @@ main {
   border-top: 1px solid #eeeeee;
 }
 
-#sectionCount {
+#sectionFooter {
   width: 90%;
   margin: 0 auto;
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2.4rem;
 }
 
-.taskCounter {
+.btnClear {
+  min-width: 120px;
+  height: 45px;
+  padding: 0 1.6rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #fd505f;
+  box-sizing: border-box;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+#taskCount {
   font-size: 1.6rem;
   font-weight: 400;
   color: #b1bacb;
@@ -194,7 +209,7 @@ main {
     font-size: 2rem;
     font-weight: 500;
   }
-  .formTodo {
+  #formTodo {
     flex-direction: column;
     gap: 1.6rem;
     & > input {
@@ -225,5 +240,9 @@ main {
     flex-direction: column;
     gap: 0.4rem;
     align-items: flex-start;
+  }
+  #sectionFooter {
+    flex-direction: column-reverse;
+    gap: 1.6rem;
   }
 }
