@@ -16,35 +16,37 @@
     <title>Document</title>
   </head>
   <body>
-    <main id="mainContainer">
-      <section class="sectionTitle">
+    <div id="mainContainer">
+      <header class="sectionTitle">
         <h1>Board de tarefas</h1>
-      </section>
-      <section class="sectionForm">
-        <form id="formTodo" submit="addTask">
-          <input
-            class="inputTask"
-            id="inputDescription"
-            type="text"
-            placeholder="Nome da tarefa"
-          />
-          <input
-            class="inputLabel"
-            id="inputLabel"
-            type="text"
-            placeholder="Etiqueta"
-          />
-          <button class="buttonForm" type="submit">+</button>
-        </form>
-      </section>
-      <section id="sectionList"></section>
-      <div class="separator"></div>
-      <section id="sectionFooter">
+      </header>
+      <main>
+        <section class="sectionForm">
+          <form id="formTodo" submit="addTask">
+            <input
+              class="inputTask"
+              id="inputDescription"
+              type="text"
+              placeholder="Nome da tarefa"
+            />
+            <input
+              class="inputLabel"
+              id="inputLabel"
+              type="text"
+              placeholder="Etiqueta"
+            />
+            <button class="buttonForm" type="submit">+</button>
+          </form>
+        </section>
+        <section id="sectionList"></section>
+        <div class="separator"></div>
+      </main>
+      <footer id="sectionFooter">
         <button id="clearCompleted" class="btnClear">
           Apagar Tarefas Concluídas
         </button>
         <p id="taskCount"></p>
-      </section>
-    </main>
+      </footer>
+    </div>
   </body>
 </html>

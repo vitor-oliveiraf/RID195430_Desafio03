@@ -1,26 +1,39 @@
-let tasks = [
-  {
-    id: 1,
-    description: "Implementar tela de listagem de tarefas",
-    label: "frontend",
-    CreatedAt: "21/08/2024",
-    concluded: false,
-  },
-  {
-    id: 2,
-    description: "Criar endpoint para cadastro de tarefas",
-    label: "backend",
-    CreatedAt: "22/08/2024",
-    concluded: false,
-  },
-  {
-    id: 3,
-    description: "Implementar protótipo da listagem de tarefas",
-    label: "ux",
-    CreatedAt: "23/08/2024",
-    concluded: true,
-  },
-];
+// let tasks = [
+//   {
+//     id: 1,
+//     description: "Implementar tela de listagem de tarefas",
+//     label: "frontend",
+//     CreatedAt: "21/08/2024",
+//     concluded: false,
+//   },
+//   {
+//     id: 2,
+//     description: "Criar endpoint para cadastro de tarefas",
+//     label: "backend",
+//     CreatedAt: "22/08/2024",
+//     concluded: false,
+//   },
+//   {
+//     id: 3,
+//     description: "Implementar protótipo da listagem de tarefas",
+//     label: "ux",
+//     CreatedAt: "23/08/2024",
+//     concluded: true,
+//   },
+// ];
+
+//Tasks local storage
+
+const getTasksLocalStorage = () => {
+  const tasks = JSON.parse(localStorage.getItem("tasks"));
+  return tasks ? tasks : [];
+};
+
+let tasks = getTasksLocalStorage();
+
+const setTasksLocalStorage = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
 
 // Criar componente de tarefa
 const createTaskComponent = (task) => {
@@ -51,9 +64,18 @@ const createTaskComponent = (task) => {
     sectionList.innerHTML = ""; // Limpa a lista
     tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
     updatecounter(); // Atualiza o contador
+    setTasksLocalStorage();
   });
 
-  sectionList.appendChild(cardContainer);
+  // // Excluir tarefa
+  // const deleteButton = cardContainer.querySelector(".btnExcluir");
+  // deleteButton.addEventListener("click", () => {
+  //   tasks = tasks.filter((t) => t.id !== task.id);
+  //   sectionList.innerHTML = "";
+  //   tasks.forEach((task) => createTaskComponent(task));
+  //   updatecounter();
+  //   setTasksLocalStorage();
+  // });
 
   sectionList.appendChild(cardContainer);
 };
@@ -62,7 +84,11 @@ const createTaskComponent = (task) => {
 function updatecounter() {
   const taskConcluded = tasks.filter((task) => task.concluded).length;
   const taskCountElement = document.getElementById("taskCount");
+  const sectionList = document.getElementById("sectionList");
   taskCountElement.innerText = `${taskConcluded} de ${tasks.length} tarefas`;
+  if (tasks.length === 0) {
+    sectionList.innerHTML = '<p class="empty-message">Sem tarefas.</p>';
+  }
 }
 
 // Criar nova tarefa
@@ -70,6 +96,11 @@ const createTask = (event) => {
   event.preventDefault();
   const inputDescription = document.getElementById("inputDescription");
   const inputLabel = document.getElementById("inputLabel");
+  const sectionList = document.getElementById("sectionList");
+
+  // Limpa a seção antes de adicionar nova tarefa
+  sectionList.innerHTML = "";
+
   const newTask = {
     id: tasks.length + 1,
     description: inputDescription.value,
@@ -81,10 +112,12 @@ const createTask = (event) => {
   inputDescription.value = "";
   inputLabel.value = "";
 
-  createTaskComponent(newTask);
-
   tasks = [...tasks, newTask];
-
+  setTasksLocalStorage();
+  updatecounter();
+  tasks.forEach((task) => {
+    createTaskComponent(task);
+  });
   updatecounter();
 };
 
@@ -97,7 +130,7 @@ function clearCompletedTasks() {
   const sectionList = document.getElementById("sectionList");
   sectionList.innerHTML = ""; // Limpa todas as tarefas
   tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
-
+  setTasksLocalStorage(); // Atualiza o local storage
   // Atualiza o contador
   updatecounter();
 }

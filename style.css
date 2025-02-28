@@ -14,7 +14,7 @@ html {
 
 body {
   width: 100%;
-  height: 100%;
+  max-height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -23,7 +23,7 @@ body {
   background-color: #f5f9ff;
 }
 
-main {
+#mainContainer {
   width: 650px;
   display: flex;
   flex-direction: column;
@@ -74,6 +74,11 @@ main {
     font-size: 1.8rem;
     cursor: pointer;
   }
+
+  & > button:hover {
+    background-color: #003ec5;
+    transform: scale(0.95);
+  }
 }
 
 .btnConcluido {
@@ -89,6 +94,7 @@ main {
   color: #ffffff;
   cursor: pointer;
 }
+
 /* Icone do botão concluido */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 20;
@@ -102,8 +108,17 @@ main {
   gap: 0.8rem;
 }
 
+.empty-message {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  color: #8f959e;
+  padding: 2.4rem 0;
+}
+
 .cardContainer {
   width: 100%;
+  min-height: 100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -168,6 +183,11 @@ main {
   cursor: pointer;
 }
 
+.btnConcluir:hover {
+  background-color: #003ec5;
+  transform: scale(0.95);
+}
+
 .separator {
   width: 90%;
   display: flex;
@@ -196,6 +216,11 @@ main {
   color: #ffffff;
   font-size: 1.8rem;
   cursor: pointer;
+}
+
+.btnClear:hover {
+  background-color: #fa2b3d;
+  transform: scale(0.95);
 }
 
 #taskCount {
@@ -229,6 +254,12 @@ main {
   .cardContainer {
     flex-direction: column;
   }
+  .description {
+    text-align: center;
+  }
+  .labelContainer {
+    justify-content: space-between;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -236,10 +267,8 @@ main {
     font-size: 2.8rem;
     text-align: center;
   }
-  .labelContainer {
-    flex-direction: column;
-    gap: 0.4rem;
-    align-items: flex-start;
+  .createdAt {
+    text-align: end;
   }
   #sectionFooter {
     flex-direction: column-reverse;
