@@ -1,39 +1,39 @@
-let tasks = [
-  {
-    id: 1,
-    description: "Implementar tela de listagem de tarefas",
-    label: "frontend",
-    CreatedAt: "21/08/2024",
-    concluded: false,
-  },
-  {
-    id: 2,
-    description: "Criar endpoint para cadastro de tarefas",
-    label: "backend",
-    CreatedAt: "22/08/2024",
-    concluded: false,
-  },
-  {
-    id: 3,
-    description: "Implementar protótipo da listagem de tarefas",
-    label: "ux",
-    CreatedAt: "23/08/2024",
-    concluded: true,
-  },
-];
+// let tasks = [
+//   {
+//     id: 1,
+//     description: "Implementar tela de listagem de tarefas",
+//     label: "frontend",
+//     CreatedAt: "21/08/2024",
+//     concluded: false,
+//   },
+//   {
+//     id: 2,
+//     description: "Criar endpoint para cadastro de tarefas",
+//     label: "backend",
+//     CreatedAt: "22/08/2024",
+//     concluded: false,
+//   },
+//   {
+//     id: 3,
+//     description: "Implementar protótipo da listagem de tarefas",
+//     label: "ux",
+//     CreatedAt: "23/08/2024",
+//     concluded: true,
+//   },
+// ];
 
 //Tasks local storage
 
-// const getTasksLocalStorage = () => {
-//   const tasks = JSON.parse(localStorage.getItem("tasks"));
-//   return tasks ? tasks : [];
-// };
+const getTasksLocalStorage = () => {
+  const tasks = JSON.parse(localStorage.getItem("tasks"));
+  return tasks ? tasks : [];
+};
 
-// let tasks = getTasksLocalStorage();
+let tasks = getTasksLocalStorage();
 
-// const setTasksLocalStorage = () => {
-//   localStorage.setItem("tasks", JSON.stringify(tasks));
-// };
+const setTasksLocalStorage = () => {
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+};
 
 // Criar componente de tarefa
 const createTaskComponent = (task) => {
@@ -65,7 +65,7 @@ const createTaskComponent = (task) => {
     tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
     updatecounter(); // Atualiza o contador
     // código para salvar no localStorage
-    // setTasksLocalStorage();
+    setTasksLocalStorage();
     sectionError.innerHTML = "";
   });
 
@@ -116,7 +116,7 @@ const createTask = (event) => {
 
   tasks = [...tasks, newTask];
   // código para salvar no localStorage
-  // setTasksLocalStorage();
+  setTasksLocalStorage();
 
   // Renderiza todas as tasks novamente
   tasks.forEach((task) => {
@@ -136,7 +136,7 @@ function clearCompletedTasks() {
   sectionList.innerHTML = ""; // Limpa todas as tarefas
   tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
   // código para salvar no localStorage
-  // setTasksLocalStorage(); // Atualiza o local storage
+  setTasksLocalStorage(); // Atualiza o local storage
   // Atualiza o contador
   updatecounter();
   sectionError.innerHTML = "";
