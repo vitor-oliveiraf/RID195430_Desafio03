@@ -12,10 +12,11 @@ CSS
 JavaScript
 🎯 Funcionalidades
 
-Adicionar tarefas
-Marcar tarefas como concluídas
-Excluir tarefas
-Interface responsiva para diferentes dispositivos
+✅ Adicionar tarefas
+✏️ Marcar tarefas como concluídas
+🗑️ Excluir tarefas
+💾 Persistência de dados no LocalStorage (as tarefas permanecem salvas mesmo após recarregar a página)
+📱 Interface responsiva para diferentes dispositivos
 📐 Estilização e Responsividade
 A aplicação foi desenvolvida com foco em responsividade, utilizando:
 
