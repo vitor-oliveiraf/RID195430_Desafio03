@@ -1,39 +1,39 @@
-// let tasks = [
-//   {
-//     id: 1,
-//     description: "Implementar tela de listagem de tarefas",
-//     label: "frontend",
-//     CreatedAt: "21/08/2024",
-//     concluded: false,
-//   },
-//   {
-//     id: 2,
-//     description: "Criar endpoint para cadastro de tarefas",
-//     label: "backend",
-//     CreatedAt: "22/08/2024",
-//     concluded: false,
-//   },
-//   {
-//     id: 3,
-//     description: "Implementar protótipo da listagem de tarefas",
-//     label: "ux",
-//     CreatedAt: "23/08/2024",
-//     concluded: true,
-//   },
-// ];
+let tasks = [
+  {
+    id: 1,
+    description: "Implementar tela de listagem de tarefas",
+    label: "frontend",
+    CreatedAt: "21/08/2024",
+    concluded: false,
+  },
+  {
+    id: 2,
+    description: "Criar endpoint para cadastro de tarefas",
+    label: "backend",
+    CreatedAt: "22/08/2024",
+    concluded: false,
+  },
+  {
+    id: 3,
+    description: "Implementar protótipo da listagem de tarefas",
+    label: "ux",
+    CreatedAt: "23/08/2024",
+    concluded: true,
+  },
+];
 
 //Tasks local storage
 
-const getTasksLocalStorage = () => {
-  const tasks = JSON.parse(localStorage.getItem("tasks"));
-  return tasks ? tasks : [];
-};
+// const getTasksLocalStorage = () => {
+//   const tasks = JSON.parse(localStorage.getItem("tasks"));
+//   return tasks ? tasks : [];
+// };
 
-let tasks = getTasksLocalStorage();
+// let tasks = getTasksLocalStorage();
 
-const setTasksLocalStorage = () => {
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-};
+// const setTasksLocalStorage = () => {
+//   localStorage.setItem("tasks", JSON.stringify(tasks));
+// };
 
 // Criar componente de tarefa
 const createTaskComponent = (task) => {
@@ -64,18 +64,10 @@ const createTaskComponent = (task) => {
     sectionList.innerHTML = ""; // Limpa a lista
     tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
     updatecounter(); // Atualiza o contador
-    setTasksLocalStorage();
+    // código para salvar no localStorage
+    // setTasksLocalStorage();
+    sectionError.innerHTML = "";
   });
-
-  // // Excluir tarefa
-  // const deleteButton = cardContainer.querySelector(".btnExcluir");
-  // deleteButton.addEventListener("click", () => {
-  //   tasks = tasks.filter((t) => t.id !== task.id);
-  //   sectionList.innerHTML = "";
-  //   tasks.forEach((task) => createTaskComponent(task));
-  //   updatecounter();
-  //   setTasksLocalStorage();
-  // });
 
   sectionList.appendChild(cardContainer);
 };
@@ -96,6 +88,15 @@ const createTask = (event) => {
   event.preventDefault();
   const inputDescription = document.getElementById("inputDescription");
   const inputLabel = document.getElementById("inputLabel");
+  const sectionError = document.getElementById("sectionError");
+
+  // Validação dos campos
+  if (!inputDescription.value.trim() || !inputLabel.value.trim()) {
+    sectionError.innerHTML =
+      '<p class="empty-form">Por favor, preencha todos os campos!</p>';
+    return;
+  }
+
   const sectionList = document.getElementById("sectionList");
 
   // Limpa a seção antes de adicionar nova tarefa
@@ -111,14 +112,18 @@ const createTask = (event) => {
 
   inputDescription.value = "";
   inputLabel.value = "";
+  sectionError.innerHTML = "";
 
   tasks = [...tasks, newTask];
-  setTasksLocalStorage();
-  updatecounter();
+  // código para salvar no localStorage
+  // setTasksLocalStorage();
+
+  // Renderiza todas as tasks novamente
   tasks.forEach((task) => {
     createTaskComponent(task);
   });
   updatecounter();
+  console.log(tasks);
 };
 
 // Função para apagar tarefas concluídas
@@ -130,9 +135,11 @@ function clearCompletedTasks() {
   const sectionList = document.getElementById("sectionList");
   sectionList.innerHTML = ""; // Limpa todas as tarefas
   tasks.forEach((task) => createTaskComponent(task)); // Re-renderiza tarefas
-  setTasksLocalStorage(); // Atualiza o local storage
+  // código para salvar no localStorage
+  // setTasksLocalStorage(); // Atualiza o local storage
   // Atualiza o contador
   updatecounter();
+  sectionError.innerHTML = "";
 }
 
 // window.onload renderiza tudo dentro dele ao carregar a página
